@@ -5,6 +5,7 @@ import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import Vue from '@vitejs/plugin-vue2'
 import VueJsx from '@vitejs/plugin-vue2-jsx'
+import Legacy from '@vitejs/plugin-legacy'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
@@ -27,6 +28,11 @@ export default defineConfig({
         }),
         vueJsx: VueJsx(),
       },
+    }),
+
+    Legacy({
+      targets: ['ie >= 9'],
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
     }),
 
     // https://github.com/antfu/unplugin-auto-import
