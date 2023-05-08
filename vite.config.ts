@@ -1,6 +1,6 @@
 import { URL, fileURLToPath } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import Vue from '@vitejs/plugin-vue2'
@@ -18,6 +18,8 @@ export default defineConfig({
     },
   },
   plugins: [
+    splitVendorChunkPlugin(),
+
     ReactivityTransform(),
 
     VueMacros({
