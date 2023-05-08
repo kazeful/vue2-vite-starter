@@ -16,7 +16,7 @@ export default defineComponent({
     <br>
     <DefineModel v-model="value" />
     <br>
-    <div flex="~" justify="center" grid="gap-2">
+    <div flex="~" justify="center" space="x-2">
       <DefineProps :value="value">
         DefineProps
       </DefineProps>
