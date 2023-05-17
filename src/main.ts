@@ -1,9 +1,13 @@
 import Vue from 'vue'
+import ElementUI from 'element-ui'
 import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 // import 'virtual:unocss-devtools'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
 
 function bootstrap() {
   Vue.config.productionTip = false
