@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { value: state } = defineModel<{
-  value?: String
+const { value: state } = defineModels<{
+  value?: string
 }>()
 </script>
 

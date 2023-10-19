@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  value?: String
+  value?: string
 }>()
 
 defineEmits(['input'])
