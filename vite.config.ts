@@ -1,14 +1,13 @@
-import { URL, fileURLToPath } from 'node:url'
+import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
-import VueMacros from 'unplugin-vue-macros/vite'
+import Legacy from '@vitejs/plugin-legacy'
 import Vue from '@vitejs/plugin-vue2'
 import VueJsx from '@vitejs/plugin-vue2-jsx'
-import Legacy from '@vitejs/plugin-legacy'
+import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import Unocss from 'unocss/vite'
+import VueMacros from 'unplugin-vue-macros/vite'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,10 +17,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    splitVendorChunkPlugin(),
-
-    ReactivityTransform(),
-
     VueMacros({
       // version: 2,
       plugins: {
@@ -59,4 +54,15 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
   ],
+
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('element-ui'))
+            return 'element-ui'
+        },
+      },
+    },
+  },
 })
